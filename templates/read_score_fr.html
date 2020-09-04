@@ -1,18 +1,87 @@
-<h2>Score de lisibilité Web</h2>
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<title>Rétroaction par page</title>
+		<meta content="width=device-width,initial-scale=1" name="viewport">
+		<meta name=”robots” content=”noindex, follow”>
+		<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/compiled/soyutils.js"></script>
+		<script type="text/javascript" src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/compiled/wet-en.js"></script>
+		<link href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+		<!-- Write closure template -->
+		<script type="text/javascript">
+			document.write(wet.builder.refTop({
+			}));
+		</script>
+	</head>
+	<body vocab="http://schema.org/" typeof="WebPage">
+		<div id="def-top">
+		</div>
+		<script type="text/javascript">
+			var defTop = document.getElementById("def-top");
+			defTop.outerHTML = wet.builder.top({
+				lngLinks: [{
+					lang: "fr",
+					href: "#",
+					text: "Français"
+				}],
+				breadcrumbs: [{
+					title: "Canada.ca",
+					href: "https://www.canada.ca/fr.html"
+				}],
+				search: true,
+				siteMenu: true,
+				showPreContent: true
+			});
+		</script>
+		<main role="main" property="mainContentOfPage" class="container">
 
-<p><strong>Score total = {{ total_score }}/100</strong></p>
+<h1>Score de lisibilité Web - Expérimental</h1>
+<form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
+  <label for="url">URL:</label>
+  <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
+  <p><strong>Language of the page:</strong></p>
+    <input type="radio" id="English" name="lang" value="English"> Anglais</input><br>
+    <input type="radio" id="French" name="lang" value="French"> Français</input><br>
+<input type="submit">
+</form>
+<script>
+  const form = window.document.getElementById("attributes");
+  form.addEventListener('submit', submitRedirect);
+  function submitRedirect(event) {
+    event.preventDefault();
+    var formData = new FormData(form);
+    var queryString = "?";
+    for (var key of formData.keys()) {
+      queryString = queryString + key + "=" + formData.get(key) + "&";
+    }
+    location.href = 'read_score' + queryString;
+  }
+</script>
+
+<h2>Score total</h2>
+
+<p><strong>{{ total_score }}/100</strong></p>
 
 
-<h3>Détails du score total</h3>
+<h2>Détails du score total</h2>
 
-<ul>
-<li>Points de lisibilité de base : {{ fkpoints }}/60 (Adjusted Flesch-Kincaid readability score of: {{ final_fk_score }})</li>
-<li>Points pour les en-têtes : {{ hpoints }}/20 (words per heading: {{ hratio }})</li>
-<li>Points pour les paragraphes {{ ppoints }}/20 (words per paragraph: {{ pratio }})</li>
-</ul>
+<h3>Points de lisibilité de base</h3>
+<p>{{ fkpoints }}/60 (Score de lisibilité Flesch-Kincaid ajusté : {{ final_fk_score }})</p>
+
+<h3>Points pour les en-têtes</h3>
+<p>{{ hpoints }}/20 (mots par en-tête : {{ hratio }})</p>
+
+<h3>Points pour les en-têtes<<h3>
+<p>{{ ppoints }}/20 (mots par paragraphe : {{ pratio }})</p>
 
 <h2>Nombre total de mots sur la page</h2>
 <p>{{ total_words }}</p>
 
 <h2>Mots les plus fréquents sur la page</h2>
 <p>{{ most_common }}</p>
+
+<h2>Pour en savoir plus</h2>
+<p>Voir le code et la méthodologie sur GitHub:</p>
+<a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>

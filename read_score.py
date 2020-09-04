@@ -9,12 +9,12 @@ app = Flask(__name__)
 def suggest():
 
     #get language
-    lang = request.args.get('lang')
+    lang = request.args.get('lang', 'English')
 
-    if lang == 'en':
+    if lang == 'English':
 
 	    #get url
-        url = request.args.get('url')
+        url = request.args.get('url', 'https://www.canada.ca/en.html')
 
         #get the html from the URL
         import requests
@@ -114,12 +114,12 @@ def suggest():
         pratio = format(pratio, '.2f')
         total_words = len(words)
 
-        return render_template("read_score_en.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, most_common = most_common)
+        return render_template("read_score_en.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, most_common = most_common, url = url, lang = lang)
 
-    if lang == 'fr':
+    if lang == 'French':
 
 	    #get url
-        url = request.args.get('url')
+        url = request.args.get('url', 'https://www.canada.ca/fr.html')
 
         #get the html from the URL
         import requests
