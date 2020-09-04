@@ -1,6 +1,7 @@
 from flask import Flask
 from flask import request
 from flask import app, render_template
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -70,6 +71,9 @@ def suggest():
         from nltk import FreqDist
         fdist1 = FreqDist(words_ns)
         most_common = fdist1.most_common(20)
+        mc = pd.DataFrame(most_common, columns =['Word', 'Count'])
+        mc = mc[['Count', 'Word']]
+        word_column_names = ['Count', 'Word']
 
         #get all headings and calculate how many words on average between headings
         headings = original_soup.findAll(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
@@ -114,7 +118,7 @@ def suggest():
         pratio = format(pratio, '.2f')
         total_words = len(words)
 
-        return render_template("read_score_en.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, most_common = most_common, url = url, lang = lang)
+        return render_template("read_score_en.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, most_common = most_common, url = url, lang = lang, word_column_names = word_column_names, row_data_word = list(mc.values.tolist()), zip = zip)
 
     if lang == 'French':
 
@@ -175,6 +179,9 @@ def suggest():
         from nltk import FreqDist
         fdist1 = FreqDist(words_ns)
         most_common = fdist1.most_common(20)
+        mc = pd.DataFrame(most_common, columns =['Mot', 'Nombre'])
+        mc = mc[['Nombre', 'Mot']]
+        word_column_names = ['Nombre', 'Mot']
 
         #get all headings and calculate how many words on average between headings
         headings = original_soup.findAll(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
@@ -219,7 +226,7 @@ def suggest():
         pratio = format(pratio, '.2f')
         total_words = len(words)
 
-        return render_template("read_score_fr.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, most_common = most_common)
+        return render_template("read_score_fr.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, most_common = most_common, word_column_names = word_column_names, row_data_word = list(mc.values.tolist()), zip = zip, url = url)
 
 if __name__ == '__main__':
     app.run()

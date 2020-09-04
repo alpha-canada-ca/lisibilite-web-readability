@@ -69,21 +69,36 @@
 <h2>Total score details</h2>
 
 <h3>Basic readability points</h3>
-<p<strong>{{ fkpoints }}/60 </strong></p>
+<p><strong>{{ fkpoints }}/60 </strong></p>
 <p>Adjusted Flesch-Kincaid readability score of: {{ final_fk_score }}</p>
 
-<h3>Heading points:</h3>
-<p>{{ hpoints }}/20 (words per heading: {{ hratio }})</p>
+<h3>Heading points</h3>
+<p><strong>{{ hpoints }}/20</strong></p>
+<p>Words per heading: {{ hratio }}</p>
 
-<h3>Paragraph points:</h3>
-<p>{{ ppoints }}/20 (words per paragraph: {{ pratio }})</p>
+<h3>Paragraph points</h3>
+<p><strong>{{ ppoints }}/20</strong></p>
+<p>Words per paragraph: {{ pratio }}</p>
 
 
 <h2>Total number of words on page</h2>
 <p>{{ total_words }}</p>
 
 <h2>Most frequent words on page</h2>
-<p>{{ most_common }}</p>
+<table class="wb-tables table table-striped">
+				<tr>
+					{% for col in word_column_names %}
+					<th>{{col}}</th>
+					{% endfor %}
+				</tr>
+				{% for row in row_data_word %}
+				<tr>
+					{% for col, row_ in zip(word_column_names, row) %}
+					<td>{{row_}}</td>
+					{% endfor %}
+				</tr>
+				{% endfor %}
+			</table>
 
 <h2>More information</h2>
 <p>See code and methodology on GitHub:</p>
