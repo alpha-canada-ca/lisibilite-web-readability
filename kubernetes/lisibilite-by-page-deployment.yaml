@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: readability-lisibilite
+  name: readability-lisibilite
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: readability-lisibilite
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: readability-lisibilite
+    spec:
+      containers:
+      - image: dtobtn/readability-lisibilite:latest
+        imagePullPolicy: Always
+        name: readability-lisibilite
+        resources: 
+          limits:
+            cpu: 500m
+            memory: 512Mi
+          requests:
+            cpu: 125m
+            memory: 128Mi
+

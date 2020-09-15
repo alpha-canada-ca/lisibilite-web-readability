@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: readability-lisibilite-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  tls:
+  - hosts:
+    - readability-lisibilite.tbs.alpha.canada.ca
+    secretName: readability-lisibilite-tls-secret-prod
+  rules:
+  - host: readability-lisibilite.tbs.alpha.canada.ca
+    http:
+      paths:
+      - backend:
+          serviceName: readability-lisibilite
+          servicePort: 5000
+        path: /
+      

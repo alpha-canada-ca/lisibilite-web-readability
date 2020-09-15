@@ -1,7 +1,7 @@
 version: '3'
 services:
   suggestion:
-    image: "dtobtn/listibilite:latest"
+    image: "dtobtn/readability-lisibilite:latest"
     build: 
       context: ../
       dockerfile: docker/Dockerfile
