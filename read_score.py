@@ -11,7 +11,8 @@ def suggest():
 
     #get language
     lang = request.args.get('lang', 'English')
-
+    import nltk
+    nltk.download('punkt')
     if lang == 'English':
 
 	    #get url
@@ -51,7 +52,7 @@ def suggest():
 
 
         #tokenize the text for processing
-        import nltk
+        
         from nltk.tokenize import RegexpTokenizer
         tokenizer = RegexpTokenizer('\w+')
         tokens = tokenizer.tokenize(revised_text)
