@@ -1,0 +1,14 @@
+version: '3'
+services:
+  suggestion:
+    image: "dtobtn/listibilite:latest"
+    build: 
+      context: ../
+      dockerfile: docker/Dockerfile
+    working_dir: /app
+    ports:
+    - 5000:5000
+    
+
+
+  
