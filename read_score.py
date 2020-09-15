@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 def suggest():
 
-    #get language
+    #get  language
     lang = request.args.get('lang', 'English')
     import nltk
     nltk.download('punkt')
