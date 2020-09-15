@@ -1,0 +1,40 @@
+name: Deploy to AKS Cluster
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Login to DockerHub
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+    - name: Login to DockerHub Registry
+      run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+    - run: |
+        docker build -f ./docker/Dockerfile . -t dtobtn/readability-lisibilite:${{ github.sha }}
+        docker push dtobtn/readability-lisibilite:${{ github.sha }}
+
+    # Set the target AKS cluster.
+    - uses: Azure/aks-set-context@v1
+      with:
+        creds: '${{ secrets.AZURE_CREDENTIALS }}'
+        cluster-name: tbs-prod-aks
+        resource-group: tbs-prod-rg
+        
+    - uses: Azure/k8s-deploy@v1
+      with:
+        manifests: |
+          kubernetes/readability-lisibilite-deployment.yaml
+          kubernetes/readability-lisibilite-service.yaml
+        images: |
+          dtobtn/readability-lisibilite:${{ github.sha }}
+        namespace: |
+          readability-lisibilite
