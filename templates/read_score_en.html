@@ -40,9 +40,7 @@
     <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
       <label for="url">URL:</label>
       <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
-      <p><strong>Language of the page:</strong></p>
-        <input type="radio" id="English" name="lang" value="English"> English</input><br>
-        <input type="radio" id="French" name="lang" value="French"> French</input><br>
+				<input type="hidden" name="lang" value={{ lang }}>
     <input type="submit">
     </form>
     <script>
@@ -57,14 +55,34 @@
         }
         location.href = 'read_score' + queryString;
       }
+			let langElem = document.getElementById("wb-lng").getElementsByTagName("a")[0];
+		  let toggleURL = window.location + "";
+		  if (document.documentElement.lang === 'en') {
+		      toggleURL = toggleURL.replace("&lang=en", "");
+		      toggleURL += "&lang=fr";
+		  } else {
+		      toggleURL = toggleURL.replace("&lang=fr", "");
+		      toggleURL += "&lang=en";
+		  }
+		  langElem.setAttribute("href", toggleURL);
     </script>
 
 <h2>Page</h2>
 <a href='{{ url }}'>{{ url }}</a>
 
 <h2>Total score</h2>
-<p><strong>{{ total_score }}/100</strong></p>
-
+<p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
+<details>
+<summary>Meaning of score</summary>
+<ul>
+	<li><strong>90 points or more:</strong>: Outstanding! </li>
+	<li><strong>Between 80 and 90 points:</strong> Very good!</li>
+	<li><strong>Between 70 and 80 points:</strong> Not too bad</li>
+	<li><strong>Between 60 and 70 points:</strong> Needs work</li>
+	<li><strong>Between 50 and 60 points:</strong> Needs a lot of work</li>
+	<li><strong>Under 50 points:</strong> Please don't do this to people...</li>
+</ul>
+</details>
 
 <h2>Total score details</h2>
 
@@ -82,9 +100,9 @@
 	<p>The <strong>adjusted Flesch-Kincaid readability score</strong> considers each heading and each item in a bullet list as a separate sentence.</p>
 	<p>Points are attributed using this calculation:</p>
 	<ul>
-		<li><strong>Grade 6 or under</strong>: 60/60</li>
-		<li><strong>Grade 18 or over</strong>: 0/60</li>
-		<li><strong>Between grade 6 and grade 18</strong>: points go down gradually as the grade goes up</li>
+		<li><strong>Grade 6 or under:</strong> 60/60</li>
+		<li><strong>Grade 18 or over:</strong> 0/60</li>
+		<li><strong>Between grade 6 and grade 18:</strong> points go down gradually as the grade goes up</li>
 	</ul>
 </details>
 <h3>Heading points</h3>
@@ -96,9 +114,9 @@
 <p>The total number of words is divided by the number of individual headings (h1, h2, h3, h4, etc.)</p>
 <p>Points are attributed using this calculation:</p>
 <ul>
-	<li><strong>40 words per heading or less</strong>: 20/20</li>
-	<li><strong>200 words per heading or more</strong>: 0/20</li>
-	<li><strong>Between 40 and 200 words per heading</strong>: points go down gradually as the number goes up</li>
+	<li><strong>40 words per heading or less:</strong> 20/20</li>
+	<li><strong>200 words per heading or more:</strong> 0/20</li>
+	<li><strong>Between 40 and 200 words per heading:</strong> points go down gradually as the number goes up</li>
 </ul>
 </details>
 <h3>Paragraph points</h3>
@@ -110,9 +128,9 @@
 <p>The total number of words is divided by the number of paragraphs</p>
 <p>Points are attributed using this calculation:</p>
 <ul>
-	<li><strong>30 words per paragrah or less</strong>: 20/20</li>
-	<li><strong>80 words per paragraph or more</strong>: 0/20</li>
-	<li><strong>Between 30 and 80 words per paragraph</strong>: points go down gradually as the number goes up</li>
+	<li><strong>30 words per paragrah or less:</strong> 20/20</li>
+	<li><strong>80 words per paragraph or more:</strong> 0/20</li>
+	<li><strong>Between 30 and 80 words per paragraph:</strong> points go down gradually as the number goes up</li>
 </ul>
 </details>
 
@@ -120,20 +138,44 @@
 <p>{{ total_words }}</p>
 
 <h2>Most frequent words on page</h2>
-<table class="wb-tables table table-striped">
-				<tr>
-					{% for col in word_column_names %}
-					<th>{{col}}</th>
+		<details open="open">
+				<summary>If page is in English</summary>
+
+					<table class="wb-tables table table-striped">
+
+					<tr>
+						{% for col in word_column_names %}
+						<th>{{col}}</th>
+						{% endfor %}
+					</tr>
+					{% for row in row_data_word_en %}
+					<tr>
+						{% for col, row_ in zip(word_column_names, row) %}
+						<td>{{row_}}</td>
+						{% endfor %}
+					</tr>
 					{% endfor %}
-				</tr>
-				{% for row in row_data_word %}
-				<tr>
-					{% for col, row_ in zip(word_column_names, row) %}
-					<td>{{row_}}</td>
-					{% endfor %}
-				</tr>
-				{% endfor %}
-			</table>
+				</table>
+			</details>
+			<details>
+					<summary>If page is in French</summary>
+
+						<table class="wb-tables table table-striped">
+
+						<tr>
+							{% for col in word_column_names %}
+							<th>{{col}}</th>
+							{% endfor %}
+						</tr>
+						{% for row in row_data_word_fr %}
+						<tr>
+							{% for col, row_ in zip(word_column_names, row) %}
+							<td>{{row_}}</td>
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</table>
+				</details>
 
 <h2>More information</h2>
 <p>See code and methodology on GitHub:</p>

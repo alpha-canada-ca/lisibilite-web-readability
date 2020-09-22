@@ -22,7 +22,7 @@
 			var defTop = document.getElementById("def-top");
 			defTop.outerHTML = wet.builder.top({
 				lngLinks: [{
-					lang: "fr",
+					lang: "en",
 					href: "#",
 					text: "Français"
 				}],
@@ -41,9 +41,7 @@
 <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
   <label for="url">URL:</label>
   <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
-  <p><strong>Language of the page:</strong></p>
-    <input type="radio" id="English" name="lang" value="English"> Anglais</input><br>
-    <input type="radio" id="French" name="lang" value="French"> Français</input><br>
+	<input type="hidden" name="lang" value={{ lang }}>
 <input type="submit">
 </form>
 <script>
@@ -58,6 +56,16 @@
     }
     location.href = 'read_score' + queryString;
   }
+	let langElem = document.getElementById("wb-lng").getElementsByTagName("a")[0];
+  let toggleURL = window.location + "";
+  if (document.documentElement.lang === 'en') {
+      toggleURL = toggleURL.replace("&lang=en", "");
+      toggleURL += "&lang=fr";
+  } else {
+      toggleURL = toggleURL.replace("&lang=fr", "");
+      toggleURL += "&lang=en";
+  }
+  langElem.setAttribute("href", toggleURL);
 </script>
 
 <h2>Page</h2>
@@ -65,8 +73,19 @@
 
 <h2>Score total</h2>
 
-<p><strong>{{ total_score }}/100</strong></p>
+<p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
 
+
+<summary>Significtion du score</summary>
+<ul>
+	<li><strong>90 points ou plus :</strong> Excellent! </li>
+	<li><strong>Entre 80 et 90 points :</strong> Très bien!</li>
+	<li><strong>Entre 70 et 80 points :</strong> Pas mal</li>
+	<li><strong>Entre 60 et 70 points :</strong> À travailler</li>
+	<li><strong>Entre 50 et 60 points : </strong> Besoin de beaucoup de travail</li>
+	<li><strong>Moins de 50 points :</strong> S'il vous plaît, il faut faire quelque chose...</li>
+</ul>
+</details>
 
 <h2>Détails du score total</h2>
 
@@ -123,20 +142,45 @@
 <p>{{ total_words }}</p>
 
 <h2>Mots les plus fréquents sur la page</h2>
-<table class="wb-tables table table-striped">
-				<tr>
-					{% for col in word_column_names %}
-					<th>{{col}}</th>
+
+		<details open="open">
+				<summary>Si la page est en français</summary>
+
+					<table class="wb-tables table table-striped">
+
+					<tr>
+						{% for col in word_column_names %}
+						<th>{{col}}</th>
+						{% endfor %}
+					</tr>
+					{% for row in row_data_word_fr %}
+					<tr>
+						{% for col, row_ in zip(word_column_names, row) %}
+						<td>{{row_}}</td>
+						{% endfor %}
+					</tr>
 					{% endfor %}
-				</tr>
-				{% for row in row_data_word %}
-				<tr>
-					{% for col, row_ in zip(word_column_names, row) %}
-					<td>{{row_}}</td>
-					{% endfor %}
-				</tr>
-				{% endfor %}
-			</table>
+				</table>
+			</details>
+			<details>
+					<summary>Si la pag est en anglais</summary>
+
+						<table class="wb-tables table table-striped">
+
+						<tr>
+							{% for col in word_column_names %}
+							<th>{{col}}</th>
+							{% endfor %}
+						</tr>
+						{% for row in row_data_word_en %}
+						<tr>
+							{% for col, row_ in zip(word_column_names, row) %}
+							<td>{{row_}}</td>
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</table>
+				</details>
 
 <h2>Pour en savoir plus</h2>
 <p>Voir le code et la méthodologie sur GitHub:</p>
