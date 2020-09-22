@@ -5,6 +5,20 @@ import pandas as pd
 
 app = Flask(__name__)
 
+
+@app.route('/', methods=['GET', 'POST'])
+def homepage():
+    lang = request.args.get('lang', 'en')
+    url = request.args.get('url', 'URL')
+
+
+    if lang == 'en':
+
+        return render_template("index_en.html", url = url, lang = lang)
+
+    if lang == 'fr':
+        return render_template("index_fr.html", url = url, lang = lang)
+
 @app.route('/read_score')
 
 def suggest():

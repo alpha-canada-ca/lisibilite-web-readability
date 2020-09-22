@@ -24,7 +24,7 @@
 				lngLinks: [{
 					lang: "en",
 					href: "#",
-					text: "Français"
+					text: "Anglais"
 				}],
 				breadcrumbs: [{
 					title: "Canada.ca",
@@ -39,7 +39,7 @@
 
 <h1>Score de lisibilité Web - Expérimental</h1>
 <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
-  <label for="url">URL:</label>
+  <label for="url">URL :</label>
   <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
 	<input type="hidden" name="lang" value={{ lang }}>
 <input class="btn btn-primary" name=submit type="submit" value="Allez">
@@ -76,7 +76,8 @@
 <p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
 
 
-<summary>Significtion du score</summary>
+<summary>Signification du score</summary>
+<details>
 <ul>
 	<li><strong>90 points ou plus :</strong> Excellent! </li>
 	<li><strong>Entre 80 et 90 points :</strong> Très bien!</li>
