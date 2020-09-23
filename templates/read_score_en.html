@@ -256,11 +256,8 @@
 </ul>
 </details>
 
-<h2>Total number of words on page</h2>
-<p>{{ total_words }}</p>
-
 <h2>Most frequent words on page</h2>
-		<details open="open">
+		<details>
 				<summary>If page is in English</summary>
 
 					<table class="wb-tables table table-striped">
@@ -299,9 +296,16 @@
 					</table>
 				</details>
 
-<h2>More information</h2>
-<p>This tool scrapes the text that figures in the <code>main</code> tag in the HTML page. This may include some text not visible to people.</p>
-<p>See code and methodology on GitHub:</p>
-<a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
-</body>
+				<h2>Stastitics</h2>
+				<p>{{ total_words }} words</p>
+				<p>{{ len_par }} paragraphs</p>
+				<p>{{ len_headings }} headings</p>
+				<p>Original Flesch-Kincaid score (without adjustments): {{ original_score }}</p>
+
+				<h2>How to use this tool</h2>
+				<p><strong>This is an experimental tool</strong>. Do not use it as an accurate measure of readability or to assess conformity to a performance indicator. </p>
+				<p>It is designed to give a general idea of the page's web readability. A good score doesn't guarantee that the page is usable or useful.</p>
+				<p>This tool scrapes the text that figures in the <code>main</code> tag in the HTML page. This may include some text not visible to people.</p>
+				<p>See code and methodology on GitHub:</p>
+				<a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
 </html>

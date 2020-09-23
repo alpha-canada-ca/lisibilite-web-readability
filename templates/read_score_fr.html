@@ -207,7 +207,7 @@
 <p>Score de lisibilité Flesch-Kincaid ajusté : {{ final_fk_score }}</p>
 <details>
 	<summary>Calcul des points de lisibilité</summary>
-	<p><strong>Le score Flesch-Kincaid de base</strong> utilise 2 variables pour obtenir une note:p>
+	<p><strong>Le score Flesch-Kincaid de base</strong> utilise 2 variables pour obtenir une note:<p>
 	<ul>
 		<li>la longueur moyenne des phrases</li>
 		<li>le nombre moyen de syllabes par mot</li>
@@ -251,12 +251,10 @@
 </ul>
 </details>
 
-<h2>Nombre total de mots sur la page</h2>
-<p>{{ total_words }}</p>
 
 <h2>Mots les plus fréquents sur la page</h2>
 
-		<details open="open">
+		<details>
 				<summary>Si la page est en français</summary>
 
 					<table class="wb-tables table table-striped">
@@ -295,7 +293,16 @@
 					</table>
 				</details>
 
-<h2>Pour en savoir plus</h2>
-<p>Cet outil utilise le texte qui figure dans la balise <code>main</code> de la page HTML. Ceci peut inclure du texte qui n'est pas visible pour les gens.</p>
-<p>Voir le code et la méthodologie sur GitHub:</p>
-<a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
+				<h2>Statistiques</h2>
+				<p>{{ total_words }} mots</p>
+				<p>{{ len_par }} paragraphes</p>
+				<p>{{ len_headings }} en-têtes</p>
+				<p>Score Flesch-Kincaid original (sans ajustements): {{ original_score }}</p>
+
+
+				<h2>Comment utiliser cet outil</h2>
+				<p><strong>Il s'agit d'un outil expérimental.</strong>. Ne l'utilisez pas comme une mesure précise de la lisibilité ou pour évaluer la conformité à un indicateur de performance.</p>
+				<p>Il est conçu pour donner une idée générale de la lisibilité d'une page sur le web. Un bon score ne garantit pas que la page soit conviviale ou utile.</p>
+				<p>Cet outil utilise le texte qui figure dans la balise <code>main</code> de la page HTML. Ceci peut inclure du texte qui n'est pas visible pour les gens.</p>
+				<p>Voir le code et la méthodologie sur GitHub:</p>
+				<a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>

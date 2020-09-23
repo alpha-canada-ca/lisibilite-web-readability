@@ -51,6 +51,8 @@ def suggest():
     from readability import Readability
     r_o = Readability(original_text)
     original_fk = r_o.flesch_kincaid()
+    original_score = original_fk.score
+    original_score = format(original_score, '.2f')
 
     #add periods after bullet points and headings so that the Flesch Kicaid score considers them as sentences
     html1 = html.replace("</li>", ".</li>")
@@ -111,10 +113,12 @@ def suggest():
 
     #get all headings and calculate how many words on average between headings
     headings = original_soup.findAll(['h1', 'h2', 'h3', 'h4', 'h5', 'h6'])
+    len_headings = len(headings)
     hratio = len(words)/(len(headings))
 
     #get all paragraphs and all bulleted list, and calculate how many words per paragraph on average
     paragraphs = original_soup.findAll(['p', 'ul'])
+    len_par = len(paragraphs)
     pratio = (len(words)/len(paragraphs))
 
     #calculate points for readability
@@ -185,10 +189,10 @@ def suggest():
             score = "S'il vous plaît, il faut faire quelque chose..."
 
     if lang == "en":
-        return render_template("read_score_en.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, url = url, lang = lang, word_column_names = word_column_names, row_data_word_en = list(mc_en.values.tolist()), row_data_word_fr = list(mc_fr.values.tolist()), zip = zip, score = score)
+        return render_template("read_score_en.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, url = url, lang = lang, word_column_names = word_column_names, row_data_word_en = list(mc_en.values.tolist()), row_data_word_fr = list(mc_fr.values.tolist()), zip = zip, score = score, len_headings = len_headings, len_par = len_par, original_score = original_score)
 
     if lang == "fr":
-        return render_template("read_score_fr.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, url = url, lang = lang, word_column_names = word_column_names, row_data_word_en = list(mc_en.values.tolist()), row_data_word_fr = list(mc_fr.values.tolist()), zip = zip, score = score)
+        return render_template("read_score_fr.html", total_score = total_score, fkpoints = fkpoints, final_fk_score = final_fk_score, hpoints = hpoints, hratio = hratio, ppoints = ppoints, pratio = pratio, total_words = total_words, url = url, lang = lang, word_column_names = word_column_names, row_data_word_en = list(mc_en.values.tolist()), row_data_word_fr = list(mc_fr.values.tolist()), zip = zip, score = score, len_headings = len_headings, len_par = len_par, original_score = original_score)
 
 if __name__ == '__main__':
     app.run()
