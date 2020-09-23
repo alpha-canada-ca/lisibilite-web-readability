@@ -294,10 +294,12 @@
 				</details>
 
 				<h2>Statistiques</h2>
-				<p>{{ total_words }} mots</p>
-				<p>{{ len_par }} paragraphes</p>
-				<p>{{ len_headings }} en-têtes</p>
-				<p>Score Flesch-Kincaid original (sans ajustements): {{ original_score }}</p>
+				<ul>
+				<li><strong>Mots :</strong> {{ total_words }}</li>
+				<li><strong>Paragraphes :</strong> {{ len_par }} </li>
+				<li><strong>En-têtes :</strong> {{ len_headings }} </li>
+				<li><strong>Score Flesch-Kincaid original:</strong> {{ original_score }} (ceci est le score sans considérer les en-têtes et les éléments d'une liste comme des phrases séparées)</li>
+				</ul>
 
 
 				<h2>Comment utiliser cet outil</h2>
