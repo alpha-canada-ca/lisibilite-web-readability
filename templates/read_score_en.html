@@ -1,313 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
-<meta charset="utf-8">
-<!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
-<title>Web readability score - Experimental</title>
-<meta content="width=device-width,initial-scale=1" name="viewport">
-<!-- Meta data -->
-<meta name="description" content="Experimental web readability score">
-<!-- Meta data-->
-<!-- Load closure template scripts -->
+   <meta charset="utf-8">
+   <!-- Web Experience Toolkit (WET) / Boîte à outils de l'expérience Web (BOEW) wet-boew.github.io/wet-boew/License-en.html / wet-boew.github.io/wet-boew/Licence-fr.html -->
+   <title>Web readability score - Experimental</title>
+   <meta content="width=device-width,initial-scale=1" name="viewport">
+   <!-- Meta data -->
+   <meta name="description" content="Experimental web readability score">
+   <!-- Meta data-->
+   <!-- Load closure template scripts -->
+   <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/compiled/soyutils.js"></script>
+   <script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/compiled/wet-en.js"></script>
+   <noscript>
+      <!-- Write closure fall-back static file -->
+      <!-- /ROOT/app/cls/WET/gcweb/v4_0_30/cdts/static/refTop.html -->
+      <!--[if gte IE 9 | !IE ]><!-->
+      <link href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/assets/favicon.ico" rel="icon" type="image/x-icon">
+      <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/theme.min.css">
+      <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/cdtsfixes.css">
+      <link href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" rel="stylesheet">
+      <!-- Are you using the application templates? If so add the following CSS file -->
+      <!-- <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/cdtsapps.css">-->
+      <!--<![endif]-->
+      <!--[if lt IE 9]>
+      <link href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/assets/favicon.ico" rel="shortcut icon" />
+      <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/ie8-theme.min.css" />
+      <![endif]-->
+      <!--[if lte IE 9]><![endif]-->
+      <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/noscript.min.css" />
+      <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/cdtsnoscript.css" />
+   </noscript>
+   <script>
+      document.write(wet.builder.refTop({
 
-<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/compiled/soyutils.js"></script>
-<script src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/compiled/wet-en.js"></script>
-
-<noscript>
-	<!-- Write closure fall-back static file -->
-	<!-- /ROOT/app/cls/WET/gcweb/v4_0_30/cdts/static/refTop.html -->
-			<!--[if gte IE 9 | !IE ]><!-->
-<link href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/assets/favicon.ico" rel="icon" type="image/x-icon">
-<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/theme.min.css">
-<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/cdtsfixes.css">
-<link href="https://test.canada.ca/covid-19-guidance/proto/css/alpha-beta-banner.css" rel="stylesheet">
-
-<!-- Are you using the application templates? If so add the following CSS file -->
-<!-- <link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/cdtsapps.css">-->
-<!--<![endif]-->
-<!--[if lt IE 9]>
-<link href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/assets/favicon.ico" rel="shortcut icon" />
-<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/ie8-theme.min.css" />
-<![endif]-->
-<!--[if lte IE 9]><![endif]-->
-<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/css/noscript.min.css" />
-<link rel="stylesheet" href="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/cdts/cdtsnoscript.css" />
-</noscript>
-
-<script>
-		document.write(wet.builder.refTop({
-
-			"isApplication": true
-		}));
-	</script>
-
-
-	<!-- Write closure template -->
-	<script type="text/javascript">
-		document.write(wet.builder.refTop({
-		}));
-	</script>
-</head>
-<body vocab="http://schema.org/" typeof="WebPage">
-		<section class="experimental alpha-top">
-		<h2 class="wb-inv">Alpha</h2>
-		<div class="container">
-			<small><label class="alpha-label">Alpha</label>&nbsp;&nbsp;
-				This is an experimental version of Canada.ca for public testing.</small>
-		</div>
-	</section>
-	<div id="def-top">
-		<!-- Write closure fall-back static file -->
-		<!-- /ROOT/app/cls/WET/gcweb/v4_0_30/cdts/static/appTop-en.html -->
-				<ul id="wb-tphp">
-		<li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
-		<li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to "About this Web application"</a></li>
-		<!-- If you have a custom footer, replace the previous line with this one
-		<li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to "Related links"</a></li>
-		-->
-		<!-- If you have a section menu
-		<li class="wb-slc visible-md visible-lg"><a class="wb-sl" href="#wb-sec">Skip to section menu</a></li>
-		-->
-	</ul>
-	<header class="gc-app">
-		<div id="wb-bnr" class="container">
-			<!-- Adjust the default language flip URL or remove this <section>
-			<section id="wb-lng" class="text-right">
-				<h2 class="wb-inv">Language selection</h2>
-				<ul class="list-inline margin-bottom-none">
-					<li><a lang="fr" href="[Default URL for language flip]">Français</a></li>
-				</ul>
-			</section>
-				-->
-			<div class="row">
-				<div class="brand col-xs-5 col-md-4">
-					<a href="https://www.canada.ca/en.html">
-						<img src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/assets/sig-blk-en.svg" alt="" />
-						<span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
-					</a>
-				</div>
-				<!-- Adjust this search section depending on your application search
-				<section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
-					<h2>Search</h2>
-					<form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
-						<div class="form-group">
-							<label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
-							<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search">
-						</div>
-						<div class="form-group submit">
-							<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
-						</div>
-					</form>
-				</section>
-				-->
-			</div>
-		</div>
-		<div class="app-bar">
-			<div class="container">
-				<div class="row">
-					<!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
-					<section class="col-xs-12">
-						<!-- Add in your application name and URL below -->
-						<h2 class="wb-inv">Web readability score - Experimental</h2>
-						<a class="app-name" href="[Your application URL]">Web readability score - Experimental</a>
-					</section>
-					<!-- If you want to use the settings or sign in/out buttons
-					<nav class="col-sm-5 hidden-xs hidden-print">
-						<h2 class="wb-inv">Account menu</h2>
-						<ul class="app-list-account list-unstyled">
-							<li><a href="#" class="btn"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Account settings</a></li>&#32;
-							<li><a href="#" class="btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign out</a></li>
-							<li><a href="#" class="btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign in</a></li>
-						</ul>
-					</nav>
-					-->
-				</div>
-			</div>
-		</div>
-
-		<!-- Remove the whole <nav> if you want to disable breadcrumbs
-		<nav id="wb-bc" property="breadcrumb">
-			<h2>You are here:</h2>
-			<div class="container">
-				<div class="row">
-					<ol class="breadcrumb">
-						<li><a href="#">[Insert breadcrumbs]</a></li>
-					</ol>
-				</div>
-			</div>
-		</nav>
-		-->
-	</header>
-	</div>
-	<!-- Write closure template -->
-	<script>
-		var defTop = document.getElementById("def-top");
-		defTop.outerHTML = wet.builder.appTop({
-
-			"appName": [{"text": "Web readability score - Experimental", "href": "https://readability-lisibilite.tbs.alpha.canada.ca/"}],
-			"lngLinks": [{"lang": "fr",	"href": "#", "text": "Français"}]
-		});
-	</script>
-
-	<style>
-	.beta-top, .alpha-top {
-		padding-top: 2px !important;
-		padding-bottom: 2px !important;
-		top: 0px;
-		background-color: #f2f2f2;
-		z-index: 100;
-		}
-	</style>
-		<main property="mainContentOfPage" class="container">
-
-<h1>Web readability score - Experimental</h1>
-    <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
-      <label for="url">URL:</label>
-      <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
-				<input type="hidden" name="lang" value={{ lang }}>
-    <input class="btn btn-primary" name=submit type="submit" value="Continue">
-    </form>
-    <script>
-      const form = window.document.getElementById("attributes");
-      form.addEventListener('submit', submitRedirect);
-      function submitRedirect(event) {
-        event.preventDefault();
-        var formData = new FormData(form);
-        var queryString = "?";
-        for (var key of formData.keys()) {
-          queryString = queryString + key + "=" + formData.get(key) + "&";
-        }
-        location.href = 'read_score' + queryString;
+      	"isApplication": true
+      }));
+   </script>
+   <!-- Write closure template -->
+   <script type="text/javascript">
+      document.write(wet.builder.refTop({
+      }));
+   </script>
+   <style>
+      .beta-top, .alpha-top {
+      padding-top: 2px !important;
+      padding-bottom: 2px !important;
+      top: 0px;
+      background-color: #f2f2f2;
+      z-index: 100;
       }
-			let langElem = document.getElementById("wb-lng").getElementsByTagName("a")[0];
-		  let toggleURL = window.location + "";
-		  if (document.documentElement.lang === 'en') {
-		      toggleURL = toggleURL.replace("&lang=en", "");
-		      toggleURL += "&lang=fr";
-		  } else {
-		      toggleURL = toggleURL.replace("&lang=fr", "");
-		      toggleURL += "&lang=en";
-		  }
-		  langElem.setAttribute("href", toggleURL);
-    </script>
+   </style>
+   </head>
+   <body vocab="http://schema.org/" typeof="WebPage">
+      <section class="experimental alpha-top">
+         <h2 class="wb-inv">Alpha</h2>
+         <div class="container">
+            <small><label class="alpha-label">Alpha</label>&nbsp;&nbsp;
+            This is an experimental version of Canada.ca for public testing.</small>
+         </div>
+      </section>
+      <div id="def-top">
+         <!-- Write closure fall-back static file -->
+         <!-- /ROOT/app/cls/WET/gcweb/v4_0_30/cdts/static/appTop-en.html -->
+         <ul id="wb-tphp">
+            <li class="wb-slc"><a class="wb-sl" href="#wb-cont">Skip to main content</a></li>
+            <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to "About this Web application"</a></li>
+            <!-- If you have a custom footer, replace the previous line with this one
+               <li class="wb-slc visible-sm visible-md visible-lg"><a class="wb-sl" href="#wb-info">Skip to "Related links"</a></li>
+               -->
+            <!-- If you have a section menu
+               <li class="wb-slc visible-md visible-lg"><a class="wb-sl" href="#wb-sec">Skip to section menu</a></li>
+               -->
+         </ul>
+         <header class="gc-app">
+            <div id="wb-bnr" class="container">
+               <!-- Adjust the default language flip URL or remove this <section>
+                  <section id="wb-lng" class="text-right">
+                  	<h2 class="wb-inv">Language selection</h2>
+                  	<ul class="list-inline margin-bottom-none">
+                  		<li><a lang="fr" href="[Default URL for language flip]">Français</a></li>
+                  	</ul>
+                  </section>
+                  	-->
+               <div class="row">
+                  <div class="brand col-xs-5 col-md-4">
+                     <a href="https://www.canada.ca/en.html">
+                     <img src="https://www.canada.ca/etc/designs/canada/cdts/gcweb/v4_0_30/assets/sig-blk-en.svg" alt="" />
+                     <span class="wb-inv"> Government of Canada / <span lang="fr">Gouvernement du Canada</span></span>
+                     </a>
+                  </div>
+                  <!-- Adjust this search section depending on your application search
+                     <section id="wb-srch" class="col-lg-8 text-right visible-md visible-lg">
+                     	<h2>Search</h2>
+                     	<form action="#" method="post" name="cse-search-box" role="search" class="form-inline">
+                     		<div class="form-group">
+                     			<label for="wb-srch-q" class="wb-inv">Search Canada.ca</label>
+                     			<input id="wb-srch-q" list="wb-srch-q-ac" class="wb-srch-q form-control" name="q" type="search" value="" size="34" maxlength="170" placeholder="Search">
+                     		</div>
+                     		<div class="form-group submit">
+                     			<button type="submit" id="wb-srch-sub" class="btn btn-primary btn-small" name="wb-srch-sub"><span class="glyphicon-search glyphicon"></span><span class="wb-inv">Search</span></button>
+                     		</div>
+                     	</form>
+                     </section>
+                     -->
+               </div>
+            </div>
+            <div class="app-bar">
+               <div class="container">
+                  <div class="row">
+                     <!-- If you want to use the settings or sign in/out buttons then add col-sm-7 -->
+                     <section class="col-xs-12">
+                        <!-- Add in your application name and URL below -->
+                        <h2 class="wb-inv">Web readability score - Experimental</h2>
+                        <a class="app-name" href="[Your application URL]">Web readability score - Experimental</a>
+                     </section>
+                     <!-- If you want to use the settings or sign in/out buttons
+                        <nav class="col-sm-5 hidden-xs hidden-print">
+                        	<h2 class="wb-inv">Account menu</h2>
+                        	<ul class="app-list-account list-unstyled">
+                        		<li><a href="#" class="btn"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Account settings</a></li>&#32;
+                        		<li><a href="#" class="btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign out</a></li>
+                        		<li><a href="#" class="btn"><span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sign in</a></li>
+                        	</ul>
+                        </nav>
+                        -->
+                  </div>
+               </div>
+            </div>
+            <!-- Remove the whole <nav> if you want to disable breadcrumbs
+               <nav id="wb-bc" property="breadcrumb">
+               	<h2>You are here:</h2>
+               	<div class="container">
+               		<div class="row">
+               			<ol class="breadcrumb">
+               				<li><a href="#">[Insert breadcrumbs]</a></li>
+               			</ol>
+               		</div>
+               	</div>
+               </nav>
+               -->
+         </header>
+      </div>
+      <!-- Write closure template -->
+      <script>
+         var defTop = document.getElementById("def-top");
+         defTop.outerHTML = wet.builder.appTop({
 
-<a href='{{ url }}'>{{ url }}</a>
-
-<h2>Total score</h2>
-<p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
-<details>
-<summary>Meaning of score</summary>
-<ul>
-	<li><strong>90 points or more:</strong>: Outstanding! </li>
-	<li><strong>Between 80 and 90 points:</strong> Very good!</li>
-	<li><strong>Between 70 and 80 points:</strong> Not too bad</li>
-	<li><strong>Between 60 and 70 points:</strong> Needs work</li>
-	<li><strong>Between 50 and 60 points:</strong> Needs a lot of work</li>
-	<li><strong>Under 50 points:</strong> Please don't do this to people...</li>
-</ul>
-</details>
-
-<h2>Total score details</h2>
-
-<h3>Readability points</h3>
-<p><strong>{{ fkpoints }}/60 </strong></p>
-<p>Adjusted Flesch-Kincaid readability score of: {{ final_fk_score }}</p>
-<details>
-	<summary>Calculation of readability points</summary>
-	<p><strong>Basic Flesch-Kincaid</strong> uses 2 variables to get a score:</p>
-	<ul>
-		<li>average sentence length</li>
-		<li>average number of syllables per word</li>
-	</ul>
-	<p>This calculation doesn't handle headings and bullet points very well. If there isn't a period at the end of a heading or a bullet item, it considers it to be still the same sentence.</p>
-	<p>The <strong>adjusted Flesch-Kincaid readability score</strong> considers each heading and each item in a bullet list as a separate sentence.</p>
-	<p>Points are attributed using this calculation:</p>
-	<ul>
-		<li><strong>Grade 6 or under:</strong> 60/60</li>
-		<li><strong>Grade 18 or over:</strong> 0/60</li>
-		<li><strong>Between grade 6 and grade 18:</strong> points go down gradually as the grade goes up</li>
-	</ul>
-</details>
-<h3>Heading points</h3>
-<p><strong>{{ hpoints }}/20</strong></p>
-<p>Words per heading: {{ hratio }}</p>
-<details>
-<summary>Calculation of heading points</summary>
-<p>Because it's generally a good idea to use headings and subheadings, points are attributed based on the average number of words between each heading. </p>
-<p>The total number of words is divided by the number of individual headings (h1, h2, h3, h4, etc.)</p>
-<p>Points are attributed using this calculation:</p>
-<ul>
-	<li><strong>40 words per heading or less:</strong> 20/20</li>
-	<li><strong>200 words per heading or more:</strong> 0/20</li>
-	<li><strong>Between 40 and 200 words per heading:</strong> points go down gradually as the number goes up</li>
-</ul>
-</details>
-<h3>Paragraph points</h3>
-<p><strong>{{ ppoints }}/20</strong></p>
-<p>Words per paragraph: {{ pratio }}</p>
-<details>
-<summary>Calculation of paragraph points</summary>
-<p>Because it's generally a good idea to use use paragraphs and avoid a wall of text, points are attributed based on the average number of words in each paragraph. </p>
-<p>The total number of words is divided by the number of paragraphs</p>
-<p>Points are attributed using this calculation:</p>
-<ul>
-	<li><strong>30 words per paragrah or less:</strong> 20/20</li>
-	<li><strong>80 words per paragraph or more:</strong> 0/20</li>
-	<li><strong>Between 30 and 80 words per paragraph:</strong> points go down gradually as the number goes up</li>
-</ul>
-</details>
-
-<h2>Most frequent words on page</h2>
-		<details>
-				<summary>If page is in English</summary>
-
-					<table class="wb-tables table table-striped">
-
-					<tr>
-						{% for col in word_column_names %}
-						<th>{{col}}</th>
-						{% endfor %}
-					</tr>
-					{% for row in row_data_word_en %}
-					<tr>
-						{% for col, row_ in zip(word_column_names, row) %}
-						<td>{{row_}}</td>
-						{% endfor %}
-					</tr>
-					{% endfor %}
-				</table>
-			</details>
-			<details>
-					<summary>If page is in French</summary>
-
-						<table class="wb-tables table table-striped">
-
-						<tr>
-							{% for col in word_column_names %}
-							<th>{{col}}</th>
-							{% endfor %}
-						</tr>
-						{% for row in row_data_word_fr %}
-						<tr>
-							{% for col, row_ in zip(word_column_names, row) %}
-							<td>{{row_}}</td>
-							{% endfor %}
-						</tr>
-						{% endfor %}
-					</table>
-				</details>
-
-				<h2>Stastitics</h2>
-				<ul>
-				<li><strong>Words:</strong> {{ total_words }}</li>
-				<li><strong>Paragraphs:</strong> {{ len_par }} </li>
-				<li><strong>Headings:</strong> {{ len_headings }} </li>
-				<li><strong>Original Flesch-Kincaid score :</strong> {{ original_score }} (that's the score without considering headings and list items as separate sentences)</li>
-				</ul>
-
-				<h2>How to use this tool</h2>
-				<p><strong>This is an experimental tool</strong>. Do not use it as an accurate measure of readability or to assess conformity to a performance indicator. </p>
-				<p>It is designed to give a general idea of the page's web readability. A good score doesn't guarantee that the page is usable or useful.</p>
-				<p>This tool scrapes the text that figures in the <code>main</code> tag in the HTML page. This may include some text not visible to people.</p>
-				<p>See code and methodology on GitHub:</p>
-				<a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
+         	"appName": [{"text": "Web readability score - Experimental", "href": "https://readability-lisibilite.tbs.alpha.canada.ca/"}],
+         	"lngLinks": [{"lang": "fr",	"href": "#", "text": "Français"}]
+         });
+      </script>
+      <main property="mainContentOfPage" class="container">
+         <h1>Web readability score - Experimental</h1>
+         <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
+            <label for="url">URL:</label>
+            <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
+            <input type="hidden" name="lang" value={{ lang }}>
+            <input class="btn btn-primary" name=submit type="submit" value="Continue">
+         </form>
+         <script>
+            const form = window.document.getElementById("attributes");
+            form.addEventListener('submit', submitRedirect);
+            function submitRedirect(event) {
+              event.preventDefault();
+              var formData = new FormData(form);
+              var queryString = "?";
+              for (var key of formData.keys()) {
+                queryString = queryString + key + "=" + formData.get(key) + "&";
+              }
+              location.href = 'read_score' + queryString;
+            }
+            let langElem = document.getElementById("wb-lng").getElementsByTagName("a")[0];
+            let toggleURL = window.location + "";
+            if (document.documentElement.lang === 'en') {
+              toggleURL = toggleURL.replace("&lang=en", "");
+              toggleURL += "&lang=fr";
+            } else {
+              toggleURL = toggleURL.replace("&lang=fr", "");
+              toggleURL += "&lang=en";
+            }
+            langElem.setAttribute("href", toggleURL);
+         </script>
+         <a href='{{ url }}'>{{ url }}</a>
+         <h2>Total score</h2>
+         <p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
+         <details>
+            <summary>Meaning of score</summary>
+            <ul>
+               <li><strong>90 points or more:</strong>: Outstanding! </li>
+               <li><strong>Between 80 and 90 points:</strong> Very good!</li>
+               <li><strong>Between 70 and 80 points:</strong> Not too bad</li>
+               <li><strong>Between 60 and 70 points:</strong> Needs work</li>
+               <li><strong>Between 50 and 60 points:</strong> Needs a lot of work</li>
+               <li><strong>Under 50 points:</strong> Please don't do this to people...</li>
+            </ul>
+         </details>
+         <h2>Total score details</h2>
+         <h3>Readability points</h3>
+         <p><strong>{{ fkpoints }}/60 </strong></p>
+         <p>Adjusted Flesch-Kincaid readability score of: {{ final_fk_score }}</p>
+         <details>
+            <summary>Calculation of readability points</summary>
+            <p><strong>Basic Flesch-Kincaid</strong> uses 2 variables to get a score:</p>
+            <ul>
+               <li>average sentence length</li>
+               <li>average number of syllables per word</li>
+            </ul>
+            <p>This calculation doesn't handle headings and bullet points very well. If there isn't a period at the end of a heading or a bullet item, it considers it to be still the same sentence.</p>
+            <p>The <strong>adjusted Flesch-Kincaid readability score</strong> considers each heading and each item in a bullet list as a separate sentence.</p>
+            <p>Points are attributed using this calculation:</p>
+            <ul>
+               <li><strong>Grade 6 or under:</strong> 60/60</li>
+               <li><strong>Grade 18 or over:</strong> 0/60</li>
+               <li><strong>Between grade 6 and grade 18:</strong> points go down gradually as the grade goes up</li>
+            </ul>
+         </details>
+         <h3>Heading points</h3>
+         <p><strong>{{ hpoints }}/20</strong></p>
+         <p>Words per heading: {{ hratio }}</p>
+         <details>
+            <summary>Calculation of heading points</summary>
+            <p>Because it's generally a good idea to use headings and subheadings, points are attributed based on the average number of words between each heading. </p>
+            <p>The total number of words is divided by the number of individual headings (h1, h2, h3, h4, etc.)</p>
+            <p>Points are attributed using this calculation:</p>
+            <ul>
+               <li><strong>40 words per heading or less:</strong> 20/20</li>
+               <li><strong>200 words per heading or more:</strong> 0/20</li>
+               <li><strong>Between 40 and 200 words per heading:</strong> points go down gradually as the number goes up</li>
+            </ul>
+         </details>
+         <h3>Paragraph points</h3>
+         <p><strong>{{ ppoints }}/20</strong></p>
+         <p>Words per paragraph: {{ pratio }}</p>
+         <details>
+            <summary>Calculation of paragraph points</summary>
+            <p>Because it's generally a good idea to use use paragraphs and avoid a wall of text, points are attributed based on the average number of words in each paragraph. </p>
+            <p>The total number of words is divided by the number of paragraphs</p>
+            <p>Points are attributed using this calculation:</p>
+            <ul>
+               <li><strong>30 words per paragrah or less:</strong> 20/20</li>
+               <li><strong>80 words per paragraph or more:</strong> 0/20</li>
+               <li><strong>Between 30 and 80 words per paragraph:</strong> points go down gradually as the number goes up</li>
+            </ul>
+         </details>
+         <h2>Most frequent words on page</h2>
+         <details>
+            <summary>If page is in English</summary>
+            <table class="wb-tables table table-striped">
+               <tr>
+                  {% for col in word_column_names %}
+                  <th>{{col}}</th>
+                  {% endfor %}
+               </tr>
+               {% for row in row_data_word_en %}
+               <tr>
+                  {% for col, row_ in zip(word_column_names, row) %}
+                  <td>{{row_}}</td>
+                  {% endfor %}
+               </tr>
+               {% endfor %}
+            </table>
+         </details>
+         <details>
+            <summary>If page is in French</summary>
+            <table class="wb-tables table table-striped">
+               <tr>
+                  {% for col in word_column_names %}
+                  <th>{{col}}</th>
+                  {% endfor %}
+               </tr>
+               {% for row in row_data_word_fr %}
+               <tr>
+                  {% for col, row_ in zip(word_column_names, row) %}
+                  <td>{{row_}}</td>
+                  {% endfor %}
+               </tr>
+               {% endfor %}
+            </table>
+         </details>
+         <h2>Stastitics</h2>
+         <ul>
+            <li><strong>Words:</strong> {{ total_words }}</li>
+            <li><strong>Paragraphs:</strong> {{ len_par }} </li>
+            <li><strong>Headings:</strong> {{ len_headings }} </li>
+            <li><strong>Original Flesch-Kincaid score :</strong> {{ original_score }} (that's the score without considering headings and list items as separate sentences)</li>
+         </ul>
+         <h2>How to use this tool</h2>
+         <p><strong>This is an experimental tool</strong>. Do not use it as an accurate measure of readability or to assess conformity to a performance indicator. </p>
+         <p>It is designed to give a general idea of the page's web readability. A good score doesn't guarantee that the page is usable or useful.</p>
+         <p>This tool scrapes the text that figures in the <code>main</code> tag in the HTML page. This may include some text not visible to people.</p>
+         <p>See code and methodology on GitHub:</p>
+         <a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
+         <div id="def-preFooter">
+            <!-- Write closure fall-back static file -->
+            <!-- /ROOT/app/cls/WET/gcweb/v4_0_28/cdts/static/preFooter-en.html -->
+         </div>
+         <!-- Write closure template -->
+         <script>
+            var defPreFooter = document.getElementById("def-preFooter");
+            defPreFooter.outerHTML = wet.builder.preFooter({
+            	 "dateModified": "2020-09-24"
+            });
+         </script>
+      </main>
+      <div id="def-footer">
+         <!-- Write closure fall-back static file -->
+         <!-- /ROOT/app/cls/WET/gcweb/v4_0_28/cdts/static/appFooter-en.html -->
+      </div>
+      <!-- Write closure template -->
+      <script>
+         var defFooter = document.getElementById("def-footer");
+         defFooter.outerHTML = wet.builder.appFooter({
+         	"showFeatures": false
+         });
+      </script>
+      <!-- Write closure template -->
+      <script>
+         document.write(wet.builder.refFooter({
+         	"isApplication": true
+         }));
+      </script>
+   </body>
 </html>
