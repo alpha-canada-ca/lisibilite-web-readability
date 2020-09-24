@@ -178,7 +178,12 @@
          </script>
          <a href='{{ url }}'>{{ url }}</a>
          <h2>Score total</h2>
-         <p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
+				 <div class="panel panel-default">
+					 <div class="panel-body">
+						 <p class="big-font"><strong>{{ total_score }}/100</strong> </p>
+						 <p>{{ score }}</p>
+						</div>
+					</div>
          <details>
             <summary>Signification du score</summary>
             <ul>

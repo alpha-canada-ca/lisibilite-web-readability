@@ -159,7 +159,7 @@ def suggest():
     total_score = float(total_score)
     if total_score >= 90:
         if lang=='en':
-            score = 'Outsanding!'
+            score = 'Outstanding!'
         if lang=='fr':
             score = 'Excellent!'
     elif total_score >= 80 and total_score < 90:

@@ -48,6 +48,10 @@
       background-color: #f2f2f2;
       z-index: 100;
       }
+
+			.big-font {
+				font-size:1.5em;
+			}
    </style>
    </head>
    <body vocab="http://schema.org/" typeof="WebPage">
@@ -182,7 +186,12 @@
          </script>
          <a href='{{ url }}'>{{ url }}</a>
          <h2>Total score</h2>
-         <p><strong>{{ total_score }}/100</strong> ({{ score }})</p>
+				 <div class="panel panel-default">
+					 <div class="panel-body">
+						 <p class="big-font"><strong>{{ total_score }}/100</strong> </p>
+						 <p>{{ score }}</p>
+						</div>
+					</div>
          <details>
             <summary>Meaning of score</summary>
             <ul>
