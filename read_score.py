@@ -46,6 +46,12 @@ def suggest():
     from bs4 import BeautifulSoup
     original_soup = BeautifulSoup(html, features="lxml").find('main')
     original_text = original_soup.get_text()
+    original_text = original_text.replace('..', '.')
+    original_text = original_text.replace('.', '. ')
+    original_text = original_text[:original_text.find("defPreFooter")]
+    original_text = original_text.replace('\n', '')
+    original_text = original_text.replace('\t', '')
+    original_text = original_text.replace('\r', '')
 
     #get initial readability total_score
     from readability import Readability
@@ -66,6 +72,12 @@ def suggest():
     #get adjusted readability total_score
     revised_soup = BeautifulSoup(html7, features="lxml").find('main')
     revised_text = revised_soup.get_text()
+    revised_text = revised_text.replace('..', '.')
+    revised_text = revised_text .replace('.', '. ')
+    revised_text = revised_text[:revised_text.find("defPreFooter")]
+    revised_text = revised_text.replace('\n', '')
+    revised_text = revised_text.replace('\t', '')
+    revised_text = revised_text.replace('\r', '')
 
     from readability import Readability
     r_f = Readability(revised_text)
