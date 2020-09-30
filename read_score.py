@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route('/', methods=['GET', 'POST'])
 def homepage():
     lang = request.args.get('lang', 'en')
-    url = request.args.get('url', 'URL')
+    url = request.args.get('url')
 
 
     if lang == 'en':
@@ -71,6 +71,8 @@ def suggest():
 
     #get adjusted readability total_score
     revised_soup = BeautifulSoup(html7, features="lxml").find('main')
+    for t in revised_soup.select('table'):
+        t.extract()
     revised_text = revised_soup.get_text()
     revised_text = revised_text.replace('..', '.')
     revised_text = revised_text .replace('.', '. ')

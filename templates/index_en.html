@@ -152,12 +152,14 @@
       </script>
       <main property="mainContentOfPage" class="container">
          <h1>Web readability score - Experimental</h1>
+				 <div class="wb-frmvld">
          <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
             <label for="url">Enter a URL:</label>
-            <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
+            <input class="required" size="100" type="text" id="url" name="url" placeholder="Enter  URL"><br><br>
             <input type="hidden" name="lang" value={{ lang }}>
             <input class="btn btn-primary" name=submit type="submit" value="Continue">
          </form>
+			 </div>
          <script>
             const form = window.document.getElementById("attributes");
             form.addEventListener('submit', submitRedirect);
@@ -185,7 +187,7 @@
          <p>Enter a Canada.ca URL to get a web readability score.</p>
          <p><strong>This is an experimental tool</strong>. Do not use it as an accurate measure of readability or to assess conformity to a performance indicator. </p>
          <p>It is designed to give a general idea of the page's web readability. A good score doesn't guarantee that the page is usable or useful.</p>
-         <p>This tool scrapes the text that figures in the <code>main</code> tag in the HTML page. This may include some text not visible to people.</p>
+         <p>This tool scrapes the text that figures in the <code>main</code> tag in the HTML page. This may include some text not visible to people. The tool excludes text in tables for calculatin purposes.</p>
          <p>See code and methodology on GitHub:</p>
          <a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
          <div id="def-preFooter">

@@ -147,12 +147,14 @@
       </script>
       <main role="main" property="mainContentOfPage" class="container">
          <h1>Score de lisibilité Web - Expérimental</h1>
-         <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
+				 <div class="wb-frmvld">
+				 <form id="attributes" name="attributes" action="{{ url_for('suggest') }}" method="post">
             <label for="url">Entrer une URL :</label>
-            <input size="100" type="text" id="url" name="url" value={{ url }}><br><br>
+            <input class="required" size="100" type="text" id="url" name="url" placeholder="Entrer une URL"><br><br>
             <input type="hidden" name="lang" value={{ lang }}>
             <input class="btn btn-primary" name=submit type="submit" value="Allez">
          </form>
+			 </div>
          <script>
             const form = window.document.getElementById("attributes");
             form.addEventListener('submit', submitRedirect);
@@ -180,7 +182,7 @@
          <p>Entrez une URL de Canada.ca pour obtenir un score de lisibilité Web.</p>
          <p><strong>Il s'agit d'un outil expérimental.</strong>. Ne l'utilisez pas comme une mesure précise de la lisibilité ou pour évaluer la conformité à un indicateur de performance.</p>
          <p>Il est conçu pour donner une idée générale de la lisibilité d'une page sur le web. Un bon score ne garantit pas que la page soit conviviale ou utile.</p>
-         <p>Cet outil utilise le texte qui figure dans la balise <code>main</code> de la page HTML. Ceci peut inclure du texte qui n'est pas visible pour les gens.</p>
+         <p>Cet outil utilise le texte qui figure dans la balise <code>main</code> de la page HTML. Ceci peut inclure du texte qui n'est pas visible pour les gens. L'outil exclut le texte qui se trouve dans un tableau pour les besoins du calcul.</p>
          <p>Voir le code et la méthodologie sur GitHub:</p>
          <a href='https://github.com/alpha-canada-ca/lisibilite-web-readability'>https://github.com/alpha-canada-ca/lisibilite-web-readability</a>
 				 <div id="def-preFooter">
