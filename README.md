@@ -30,21 +30,6 @@ This script:
 The script also gives a list of the 15 most frequent words (excluding stop words). This could be useful for SEO purposes.
 
 
-## How to use the script
-- Install Python 3, and all needed libraries:
-  - Flask
-  - bs4 (BeautifulSoup)
-  - readability
-  - requests
-  - nltk
-- Run read_score.py in a Python intepreter - it launched a local server
-- Go to http://localhost:5000/read_score, and pass 2 parameters:
-  - the language of the page
-  - the URL of the page
-
-For example, if you go http://localhost:5000/read_score?lang=en&url=https://www.canada.ca/en/services/benefits.html, you'll get the readability score and most frequent words for the Benefits theme page.
-
-
 *******
 
 # Score de lisibilité Web
@@ -79,16 +64,3 @@ Le script:
 Le script donne également une liste des 15 mots les plus fréquents (en excluant des mots très fréquents). Cela pourrait être utile pour le les techniques d'optimisation de recherche (SEO).
 
 
-## Comment utiliser le script
-- Installez Python 3, et toutes les bibliothèques nécessaires :
-  - Flask
-  - bs4 (BeautifulSoup)
-  - readability
-  - requests
-  - nltk
-- Exécutez read_score.py dans un interpréteur Python - cela lance un serveur local
-- Allez sur http://localhost:5000/read_score, et incluez 2 paramètres :
-  - la langue de la page
-  - l'URL de la page
-
-Par exemple, si vous allez sur http://localhost:5000/read_score?lang=fr&url=https://www.canada.ca/fr/services/prestations.html, vous obtiendrez le score de lisibilité et les mots les plus fréquents pour la page thématique des avantages.
